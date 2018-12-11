@@ -1,0 +1,19 @@
+﻿Definitions
+  Real V = 30;  /* Velocity of car */
+End.
+
+ProgramVariables
+  Real hvel;
+  Real dist;
+End.
+
+Problem  
+  dist=8 & hvel=0                    
+  ->                        
+  [ 
+                {
+                        {?dist<3; hvel:=1; ++ ?dist>10; hvel:=-1;}  
+                        {dist'= hvel & dist>=0}  /* Differential Equation of motion */      
+    }*@invariant(dist>=0)
+  ] dist>=0                         
+End.
